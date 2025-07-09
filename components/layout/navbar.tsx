@@ -28,7 +28,7 @@ export default function Navbar() {
         <NavigationMenu viewport={false}>
             <NavigationMenuList>
                 {links.map(({ href, label }) => (
-                    <NavigationMenuItem>
+                    <NavigationMenuItem key={href}>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                             <Link href={href}>{label}</Link>
                         </NavigationMenuLink>
