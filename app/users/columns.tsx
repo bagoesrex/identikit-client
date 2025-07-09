@@ -20,6 +20,9 @@ export const getColumns = (
         {
             accessorKey: "email",
             header: "Email",
+            cell: ({ row }) => (
+                <div className="max-w-[10rem] truncate text-sm">{row.getValue("email")}</div>
+            ),
         },
         {
             accessorKey: "nomorTelepon",

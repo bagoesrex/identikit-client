@@ -53,7 +53,7 @@ export default function UsersPage() {
     }
 
     return (
-        <main className="flex flex-col justify-center max-w-4xl sm:px-6 mx-auto py-20">
+        <main className="flex flex-col justify-center max-w-5xl sm:px-6 mx-auto py-20">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4">
                 <h1 className="text-2xl font-bold text-center sm:text-left">Daftar Pengguna</h1>
                 <Link

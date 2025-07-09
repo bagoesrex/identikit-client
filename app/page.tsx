@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 mb-4">
-        Selamat Datang di <span className="text-purple-600">User Management App</span>
+        Selamat Datang di <span className="text-purple-600">Identikit</span>
       </h1>
       <p className="text-md sm:text-lg text-gray-600 max-w-2xl">
         Kelola data pengguna dengan mudah dan cepat. Tambah, ubah, dan hapus pengguna dalam satu dashboard yang intuitif.
