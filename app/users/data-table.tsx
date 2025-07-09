@@ -19,11 +19,15 @@ import {
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
+    emptyMessage?: string
+    loading?: boolean
 }
 
 export function DataTable<TData, TValue>({
     columns,
     data,
+    emptyMessage = "No results.",
+    loading = true
 }: DataTableProps<TData, TValue>) {
     const table = useReactTable({
         data,
@@ -53,12 +57,15 @@ export function DataTable<TData, TValue>({
                     ))}
                 </TableHeader>
                 <TableBody>
-                    {table.getRowModel().rows?.length ? (
+                    {loading ? (
+                        <TableRow>
+                            <TableCell colSpan={columns.length} className="h-24 text-center">
+                                Memuat data...
+                            </TableCell>
+                        </TableRow>
+                    ) : table.getRowModel().rows?.length ? (
                         table.getRowModel().rows.map((row) => (
-                            <TableRow
-                                key={row.id}
-                                data-state={row.getIsSelected() && "selected"}
-                            >
+                            <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                                 {row.getVisibleCells().map((cell) => (
                                     <TableCell key={cell.id}>
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -69,7 +76,7 @@ export function DataTable<TData, TValue>({
                     ) : (
                         <TableRow>
                             <TableCell colSpan={columns.length} className="h-24 text-center">
-                                No results.
+                                {emptyMessage}
                             </TableCell>
                         </TableRow>
                     )}

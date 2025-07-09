@@ -17,4 +17,9 @@ export async function getUsers() {
     return response.data.data
 }
 
+export async function deleteUser(id: string) {
+    const response = await api.delete(`/users/${id}`)
+    return response.data
+}
+
 export default api

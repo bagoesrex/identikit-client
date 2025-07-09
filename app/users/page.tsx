@@ -1,11 +1,46 @@
-import { User } from "@/types/user"
-import { columns } from "./columns"
-import { DataTable } from "./data-table"
-import Link from "next/link"
-import { getUsers } from "@/lib/axios"
+"use client"
 
-export default async function UsersPage() {
-    const data: User[] = await getUsers()
+import { useEffect, useState } from "react"
+import Link from "next/link"
+
+import { User } from "@/types/user"
+import { getColumns } from "./columns"
+import { DataTable } from "./data-table"
+import { deleteUser, getUsers } from "@/lib/axios"
+
+export default function UsersPage() {
+    const [data, setData] = useState<User[]>([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState("")
+
+    useEffect(() => {
+        let isMounted = true
+
+        const fetchData = async () => {
+            setLoading(true)
+            try {
+                const users = await getUsers()
+                if (isMounted) setData(users)
+            } catch (err) {
+                setError("Gagal memuat data pengguna")
+            } finally {
+                if (isMounted) setLoading(false)
+            }
+        }
+
+        fetchData()
+        return () => { isMounted = false }
+    }, [])
+
+    const handleDelete = async (id: string) => {
+        try {
+            await deleteUser(id)
+            const users = await getUsers()
+            setData(users)
+        } catch (err) {
+            setError("Gagal menghapus pengguna")
+        }
+    }
 
     return (
         <main className="flex flex-col justify-center max-w-4xl mx-auto py-20">
@@ -18,7 +53,13 @@ export default async function UsersPage() {
                     + Tambah User
                 </Link>
             </div>
-            <DataTable columns={columns} data={data} />
+
+            <DataTable
+                columns={getColumns(handleDelete)}
+                data={data}
+                loading={loading}
+                emptyMessage={error || "Tidak ada pengguna ditemukan."}
+            />
         </main>
     )
 }
