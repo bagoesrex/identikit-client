@@ -12,4 +12,9 @@ export async function createUser(data: any) {
     return response.data
 }
 
+export async function getUsers() {
+    const response = await api.get('/users')
+    return response.data.data
+}
+
 export default api

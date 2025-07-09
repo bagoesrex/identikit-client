@@ -1,14 +1,12 @@
 import { User } from "@/types/user"
 import { columns } from "./columns"
 import { DataTable } from "./data-table"
-import { dummyUsers } from "@/data/users"
 import Link from "next/link"
+import { getUsers } from "@/lib/axios"
 
-async function getData(): Promise<User[]> {
-    return dummyUsers
-}
 export default async function UsersPage() {
-    const data = await getData()
+    const data: User[] = await getUsers()
+
     return (
         <main className="flex flex-col justify-center max-w-4xl mx-auto py-20">
             <div className="flex justify-between items-center mb-6">
