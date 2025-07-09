@@ -40,8 +40,8 @@ export function UserDeleteButton({ id, name, onDelete }: UserDeleteButtonProps) 
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Batal</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => onDelete(id)}>
+                    <AlertDialogCancel className="bg-transparent border-1 border-black hover:bg-transparent">Batal</AlertDialogCancel>
+                    <AlertDialogAction onClick={() => onDelete(id)} className="bg-red-700 hover:bg-red-700">
                         Hapus
                     </AlertDialogAction>
                 </AlertDialogFooter>

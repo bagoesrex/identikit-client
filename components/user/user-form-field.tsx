@@ -42,36 +42,54 @@ export default function UserFormField() {
             router.push("/users")
         } catch (error: any) {
             const msg = error?.response?.data?.message || "Gagal menambahkan user"
-            // alert(msg) Todo shadcn alert
         } finally {
             setLoading(false)
         }
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="space-y-4 px-4 sm:px-0 max-w-xl mx-auto w-full"
+        >
             <div>
-                <Label className="mb-2">Nama</Label>
+                <Label className="mb-1 block">Nama</Label>
                 <Input {...register("nama")} />
-                {errors.nama && <p className="text-red-500 text-sm">{errors.nama.message}</p>}
+                {errors.nama && (
+                    <p className="text-red-500 text-sm mt-1">{errors.nama.message}</p>
+                )}
             </div>
+
             <div>
-                <Label className="mb-2">Email</Label>
+                <Label className="mb-1 block">Email</Label>
                 <Input type="email" {...register("email")} />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+                {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                )}
             </div>
+
             <div>
-                <Label className="mb-2">Nomor Telepon</Label>
+                <Label className="mb-1 block">Nomor Telepon</Label>
                 <Input {...register("nomorTelepon")} />
-                {errors.nomorTelepon && <p className="text-red-500 text-sm">{errors.nomorTelepon.message}</p>}
+                {errors.nomorTelepon && (
+                    <p className="text-red-500 text-sm mt-1">
+                        {errors.nomorTelepon.message}
+                    </p>
+                )}
             </div>
+
             <div>
-                <Label className="mb-2">Departemen</Label>
+                <Label className="mb-1 block">Departemen</Label>
                 <Input {...register("departemen")} />
-                {errors.departemen && <p className="text-red-500 text-sm">{errors.departemen.message}</p>}
+                {errors.departemen && (
+                    <p className="text-red-500 text-sm mt-1">
+                        {errors.departemen.message}
+                    </p>
+                )}
             </div>
+
             <div>
-                <Label className="mb-2">Status Aktif</Label>
+                <Label className="mb-1 block">Status Aktif</Label>
                 <Select
                     name="statusAktif"
                     defaultValue="true"
@@ -86,11 +104,13 @@ export default function UserFormField() {
                     </SelectContent>
                 </Select>
                 {errors.statusAktif && (
-                    <p className="text-red-500 text-sm">{errors.statusAktif.message as string}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                        {errors.statusAktif.message as string}
+                    </p>
                 )}
             </div>
 
-            <Button type="submit" disabled={loading} className="w-full mt-3">
+            <Button type="submit" disabled={loading} className="w-full mt-4 bg-purple-700 text-white text-sm rounded-md hover:bg-transparent hover:text-purple-700 border border-purple-700 transition">
                 {loading ? "Menyimpan..." : "Simpan"}
             </Button>
         </form>

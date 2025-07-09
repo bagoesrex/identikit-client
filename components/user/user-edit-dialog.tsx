@@ -141,7 +141,7 @@ export function UserEditDialog({ user, onUpdated }: Props) {
                         )}
                     </div>
                     <div className="flex justify-end pt-2">
-                        <Button type="submit" disabled={loading}>
+                        <Button type="submit" disabled={loading} className="w-full bg-purple-700 text-white text-sm rounded-md hover:bg-transparent hover:text-purple-700 border border-purple-700 transition">
                             {loading ? "Menyimpan..." : "Simpan"}
                         </Button>
                     </div>

@@ -38,7 +38,7 @@ export function DataTable<TData, TValue>({
     return (
         <div className="rounded-md overflow-hidden border w-full">
             <Table>
-                <TableHeader className="bg-white/60 backdrop-blur-md">
+                <TableHeader className="bg-purple-200">
                     {table.getHeaderGroups().map((headerGroup) => (
                         <TableRow key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
@@ -59,7 +59,7 @@ export function DataTable<TData, TValue>({
                 <TableBody>
                     {loading ? (
                         <TableRow>
-                            <TableCell colSpan={columns.length} className="h-24 text-center bg-gray-200">
+                            <TableCell colSpan={columns.length} className="h-24 text-center bg-white/60 backdrop-blur-md">
                                 Memuat data...
                             </TableCell>
                         </TableRow>
@@ -67,7 +67,7 @@ export function DataTable<TData, TValue>({
                         table.getRowModel().rows.map((row) => (
                             <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                                 {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id} className="bg-gray-200">
+                                    <TableCell key={cell.id} className="bg-white/60 backdrop-blur-md">
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </TableCell>
                                 ))}
@@ -75,7 +75,7 @@ export function DataTable<TData, TValue>({
                         ))
                     ) : (
                         <TableRow>
-                            <TableCell colSpan={columns.length} className="h-24 text-center bg-gray-200">
+                            <TableCell colSpan={columns.length} className="h-24 text-center bg-white/60 backdrop-blur-md">
                                 {emptyMessage}
                             </TableCell>
                         </TableRow>

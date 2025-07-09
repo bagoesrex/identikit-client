@@ -34,7 +34,7 @@ export default function Navbar() {
                             <NavigationMenuLink
                                 asChild
                                 className={navigationMenuTriggerStyle({
-                                    className: isActive ? "ring-2 ring-purple-600 ring-offset-2 text-purple-600 hover:text-purple-600 hover:ring-1 hover:ring-purple-600 transition-all" : "hover:text-purple-600 hover:ring-1 hover:ring-purple-600 transition-all"
+                                    className: isActive ? "ring-2 ring-purple-600 ring-offset-2 text-purple-600 hover:text-purple-600 hover:ring-1 hover:ring-purple-600 transition-all" : "hover:text-purple-600 hover:ring-1 hover:ring-purple-600 text-purple-600 transition-all"
                                 })}
                             >
                                 <Link href={href}>{label}</Link>
