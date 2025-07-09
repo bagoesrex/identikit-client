@@ -10,6 +10,7 @@ import { deleteUser, getUsers } from "@/lib/axios"
 import { UserListMobile } from "@/components/user/user-list-mobile"
 import { CirclePlus } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { AxiosError } from "axios"
 
 export default function UsersPage() {
     const [data, setData] = useState<User[]>([])
@@ -26,8 +27,10 @@ export default function UsersPage() {
         try {
             const users = await getUsers()
             setData(users)
-        } catch (err) {
-            setError("Gagal memuat data pengguna")
+        } catch (err: unknown) {
+            const axiosError = err as AxiosError<{ message?: string }>
+            const msg = axiosError.response?.data?.message || "Gagal memuat data pengguna"
+            setError(msg)
         }
     }
 
@@ -39,8 +42,10 @@ export default function UsersPage() {
             try {
                 const users = await getUsers()
                 if (isMounted) setData(users)
-            } catch (err) {
-                setError("Gagal memuat data pengguna")
+            } catch (err: unknown) {
+                const axiosError = err as AxiosError<{ message?: string }>
+                const msg = axiosError.response?.data?.message || "Gagal memuat data pengguna"
+                setError(msg)
             } finally {
                 if (isMounted) setLoading(false)
             }
@@ -55,8 +60,10 @@ export default function UsersPage() {
             await deleteUser(id)
             const users = await getUsers()
             setData(users)
-        } catch (err) {
-            setError("Gagal menghapus pengguna")
+        } catch (err: unknown) {
+            const axiosError = err as AxiosError<{ message?: string }>
+            const msg = axiosError.response?.data?.message || "Gagal menghapus pengguna"
+            setError(msg)
         }
     }
 

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select"
 import api from "@/lib/axios"
 import { CreateUserInput } from "@/types/user"
+import { AxiosError } from "axios"
 
 export default function UserFormField() {
     const router = useRouter()
@@ -40,8 +41,10 @@ export default function UserFormField() {
             const response = await api.post('/users', data)
             console.log(response)
             router.push("/users")
-        } catch (error: any) {
-            const msg = error?.response?.data?.message || "Gagal menambahkan user"
+        } catch (error: unknown) {
+            const err = error as AxiosError<{ message?: string }>
+            const msg = err.response?.data?.message || "Gagal menambahkan user"
+            console.error(msg)
         } finally {
             setLoading(false)
         }

@@ -1,3 +1,4 @@
+import { CreateUserInput } from '@/types/user'
 import axios from 'axios'
 
 const api = axios.create({
@@ -7,7 +8,7 @@ const api = axios.create({
     },
 })
 
-export async function createUser(data: any) {
+export async function createUser(data: CreateUserInput) {
     const response = await api.post('/users', data)
     return response.data
 }
@@ -22,7 +23,7 @@ export async function deleteUser(id: string) {
     return response.data
 }
 
-export async function editUser(id: string, data: any) {
+export async function editUser(id: string, data: CreateUserInput) {
     const response = await api.put(`/users/${id}`, data)
     return response.data
 }
