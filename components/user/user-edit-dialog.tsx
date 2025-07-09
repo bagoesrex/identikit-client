@@ -34,6 +34,7 @@ interface Props {
 
 export function UserEditDialog({ user, onUpdated }: Props) {
     const [loading, setLoading] = useState(false)
+    const [open, setOpen] = useState(false)
 
     const {
         register,
@@ -56,6 +57,7 @@ export function UserEditDialog({ user, onUpdated }: Props) {
         try {
             await editUser(String(user.id), data)
             onUpdated()
+            setOpen(false)
         } catch (error) {
             console.error("Gagal memperbarui pengguna", error)
         } finally {
@@ -64,7 +66,7 @@ export function UserEditDialog({ user, onUpdated }: Props) {
     }
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <Button
                     variant="link"
