@@ -36,9 +36,9 @@ export function DataTable<TData, TValue>({
     })
 
     return (
-        <div className="rounded-md overflow-hidden border">
+        <div className="rounded-md overflow-hidden border w-full">
             <Table>
-                <TableHeader className="bg-gray-200">
+                <TableHeader className="bg-white/60 backdrop-blur-md">
                     {table.getHeaderGroups().map((headerGroup) => (
                         <TableRow key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
@@ -59,7 +59,7 @@ export function DataTable<TData, TValue>({
                 <TableBody>
                     {loading ? (
                         <TableRow>
-                            <TableCell colSpan={columns.length} className="h-24 text-center">
+                            <TableCell colSpan={columns.length} className="h-24 text-center bg-gray-200">
                                 Memuat data...
                             </TableCell>
                         </TableRow>
@@ -67,7 +67,7 @@ export function DataTable<TData, TValue>({
                         table.getRowModel().rows.map((row) => (
                             <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                                 {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id}>
+                                    <TableCell key={cell.id} className="bg-gray-200">
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </TableCell>
                                 ))}
@@ -75,7 +75,7 @@ export function DataTable<TData, TValue>({
                         ))
                     ) : (
                         <TableRow>
-                            <TableCell colSpan={columns.length} className="h-24 text-center">
+                            <TableCell colSpan={columns.length} className="h-24 text-center bg-gray-200">
                                 {emptyMessage}
                             </TableCell>
                         </TableRow>

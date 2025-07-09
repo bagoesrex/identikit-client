@@ -5,8 +5,6 @@ import { UserEditDialog } from "@/components/user/user-edit-dialog";
 import { generateIsoDate } from "@/lib/date";
 import { User } from "@/types/user";
 import { ColumnDef } from "@tanstack/react-table"
-import { Pencil, Trash2 } from "lucide-react";
-import Link from "next/link";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
