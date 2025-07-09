@@ -1,5 +1,6 @@
 "use client"
 
+import { generateIsoDate } from "@/lib/date";
 import { User } from "@/types/user";
 import { ColumnDef } from "@tanstack/react-table"
 
@@ -40,5 +41,9 @@ export const columns: ColumnDef<User>[] = [
     {
         accessorKey: "createdAt",
         header: "Dibuat",
+        cell: ({ row }) => {
+            const date = new Date(row.original.createdAt)
+            return <span>{generateIsoDate(date, "dd MMM yyyy HH:mm")}</span>
+        },
     },
 ];
