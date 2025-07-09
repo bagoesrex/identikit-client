@@ -22,4 +22,9 @@ export async function deleteUser(id: string) {
     return response.data
 }
 
+export async function editUser(id: string, data: any) {
+    const response = await api.put(`/users/${id}`, data)
+    return response.data
+}
+
 export default api

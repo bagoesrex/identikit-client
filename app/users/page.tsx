@@ -55,7 +55,10 @@ export default function UsersPage() {
             </div>
 
             <DataTable
-                columns={getColumns(handleDelete)}
+                columns={getColumns(handleDelete, async () => {
+                    const users = await getUsers()
+                    setData(users)
+                })}
                 data={data}
                 loading={loading}
                 emptyMessage={error || "Tidak ada pengguna ditemukan."}

@@ -12,6 +12,7 @@ import {
     AlertDialogCancel,
     AlertDialogAction,
 } from "@/components/ui/alert-dialog"
+import { Button } from "../ui/button"
 
 interface UserDeleteButtonProps {
     id: string
@@ -23,10 +24,13 @@ export function UserDeleteButton({ id, name, onDelete }: UserDeleteButtonProps) 
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <button className="text-red-600 hover:underline text-sm flex items-center gap-1">
+                <Button
+                    variant="link"
+                    className="text-red-600 text-sm flex items-center mx-0 py-0"
+                >
                     <Trash2 size={16} />
                     Hapus
-                </button>
+                </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
