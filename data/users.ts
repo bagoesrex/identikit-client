@@ -1,4 +1,6 @@
-export const users = [
+import { User } from "@/types/user";
+
+export const dummyUsers: User[] = [
     {
         id: 1,
         nama: "Megumine",
@@ -6,6 +8,8 @@ export const users = [
         nomorTelepon: "08123456789",
         statusAktif: true,
         departemen: "Teknologi Informasi",
+        createdAt: "2025-07-08T10:00:00Z",
+        updatedAt: "2025-07-08T10:00:00Z",
     },
     {
         id: 2,
@@ -14,5 +18,37 @@ export const users = [
         nomorTelepon: "08234567890",
         statusAktif: false,
         departemen: "Manajemen Proyek",
+        createdAt: "2025-07-08T10:01:00Z",
+        updatedAt: "2025-07-08T10:01:00Z",
+    },
+    {
+        id: 3,
+        nama: "Aqua",
+        email: "aqua@example.com",
+        nomorTelepon: "08345678901",
+        statusAktif: true,
+        departemen: "Keuangan",
+        createdAt: "2025-07-08T10:02:00Z",
+        updatedAt: "2025-07-08T10:02:00Z",
+    },
+    {
+        id: 4,
+        nama: "Darkness",
+        email: "darkness@example.com",
+        nomorTelepon: "08456789012",
+        statusAktif: true,
+        departemen: "Sumber Daya Manusia",
+        createdAt: "2025-07-08T10:03:00Z",
+        updatedAt: "2025-07-08T10:03:00Z",
+    },
+    {
+        id: 5,
+        nama: "Kazuma",
+        email: "kazuma@example.com",
+        nomorTelepon: "08567890123",
+        statusAktif: false,
+        departemen: "Teknik",
+        createdAt: "2025-07-08T10:04:00Z",
+        updatedAt: "2025-07-08T10:04:00Z",
     },
 ];
