@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 import {
     NavigationMenu,
@@ -14,26 +15,33 @@ import {
 const links = [
     {
         href: "/users",
-        label: "User Lists",
-    },
-    {
-        href: "/about",
-        label: "About",
+        label: "User List",
     },
 ];
 
 
 export default function Navbar() {
+    const pathname = usePathname()
+
     return (
         <NavigationMenu viewport={false}>
             <NavigationMenuList>
-                {links.map(({ href, label }) => (
-                    <NavigationMenuItem key={href}>
-                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href={href}>{label}</Link>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
-                ))}
+                {links.map(({ href, label }) => {
+                    const isActive = pathname === href
+
+                    return (
+                        <NavigationMenuItem key={href}>
+                            <NavigationMenuLink
+                                asChild
+                                className={navigationMenuTriggerStyle({
+                                    className: isActive ? "ring-2 ring-purple-600 ring-offset-2 text-purple-600 hover:text-purple-600 hover:ring-1 hover:ring-purple-600 transition-all" : "hover:text-purple-600 hover:ring-1 hover:ring-purple-600 transition-all"
+                                })}
+                            >
+                                <Link href={href}>{label}</Link>
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+                    )
+                })}
             </NavigationMenuList>
         </NavigationMenu>
     )

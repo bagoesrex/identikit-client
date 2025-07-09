@@ -20,9 +20,17 @@ interface Props {
 }
 
 export function UserListMobile({ users, loading, error, onDelete, onUpdated }: Props) {
-    if (loading) return <p className="text-center py-4">Memuat data...</p>
+    if (loading) return (
+        <div className="min-h-[40vh] flex justify-center items-center">
+            <p className="text-center">Memuat data...</p>
+        </div>
+    )
     if (error) return <p className="text-center text-red-500">{error}</p>
-    if (!users.length) return <p className="text-center">Tidak ada pengguna ditemukan.</p>
+    if (!users.length) return (
+        <div className="min-h-[40vh] flex justify-center items-center">
+            <p className="text-center">Tidak ada pengguna ditemukan.</p>
+        </div>
+    )
 
     return (
         <div className="space-y-4">

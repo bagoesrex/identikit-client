@@ -9,6 +9,7 @@ import { DataTable } from "./data-table"
 import { deleteUser, getUsers } from "@/lib/axios"
 import { UserListMobile } from "@/components/user/user-list-mobile"
 import { CirclePlus } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function UsersPage() {
     const [data, setData] = useState<User[]>([])
@@ -71,12 +72,13 @@ export default function UsersPage() {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                    <Link
-                        href="/users/create"
-                        className="flex flex-row gap-2 justify-center items-center px-4 mx-10 sm:mx-0 py-2 bg-black text-white text-sm rounded-md hover:bg-transparent hover:text-black border border-black transition text-center"
-                    >
-                        <CirclePlus width={18} />
-                        Tambah User
+                    <Link href="/users/create" className="flex flex-row justify-center items-center">
+                        <Button
+                            className="flex flex-row gap-2 justify-center items-center w-[23rem] sm:w-[9rem] py-2 bg-black text-white text-sm rounded-md hover:bg-transparent hover:text-black border border-black transition text-center"
+                        >
+                            <CirclePlus width={18} />
+                            Tambah User
+                        </Button>
                     </Link>
                 </div>
 
@@ -100,6 +102,6 @@ export default function UsersPage() {
                     onUpdated={refreshData}
                 />
             </div>
-        </main>
+        </main >
     )
 }

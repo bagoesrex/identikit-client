@@ -19,7 +19,7 @@ export default function Home() {
       <Lottie animationData={animationData} className="size-50 -mt-8" />
 
       <Link href="/users">
-        <Button size="lg" className="text-base px-6 py-4">
+        <Button size="lg" className="text-base px-6 py-4 flex flex-row gap-2 justify-center items-center bg-black text-white rounded-md hover:bg-transparent hover:text-black border border-black transition text-center">
           <Users className="w-5 h-5 mr-2" />
           Lihat Pengguna
         </Button>
