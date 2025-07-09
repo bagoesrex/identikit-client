@@ -15,7 +15,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { createUser } from "@/lib/api"
+import api from "@/lib/axios"
 import { CreateUserInput } from "@/types/user"
 
 export default function UserFormField() {
@@ -37,10 +37,12 @@ export default function UserFormField() {
     const onSubmit = async (data: CreateUserInput) => {
         setLoading(true)
         try {
-            await createUser(data)
+            const response = await api.post('/users', data)
+            console.log(response)
             router.push("/users")
-        } catch (err) {
-            console.error(err)
+        } catch (error: any) {
+            const msg = error?.response?.data?.message || "Gagal menambahkan user"
+            // alert(msg) Todo shadcn alert
         } finally {
             setLoading(false)
         }
