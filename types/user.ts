@@ -1,3 +1,6 @@
+import { z } from "zod"
+import { userSchema } from "@/validations/user.validation"
+
 export type User = {
     id: number;
     nama: string;
@@ -8,3 +11,5 @@ export type User = {
     createdAt: string;
     updatedAt: string;
 };
+
+export type CreateUserInput = z.infer<typeof userSchema>
