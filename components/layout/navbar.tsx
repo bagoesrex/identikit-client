@@ -11,6 +11,7 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { CircleUserRound } from "lucide-react"
 
 const links = [
     {
@@ -37,7 +38,10 @@ export default function Navbar() {
                                     className: isActive ? "ring-2 ring-purple-600 ring-offset-2 text-purple-600 hover:text-purple-600 hover:ring-1 hover:ring-purple-600 transition-all" : "hover:text-purple-600 hover:ring-1 hover:ring-purple-600 text-purple-600 transition-all"
                                 })}
                             >
-                                <Link href={href}>{label}</Link>
+                                <Link href={href} className="flex flex-row items-center gap-2">
+                                    <CircleUserRound className="text-purple-600" />
+                                    {label}
+                                </Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                     )
