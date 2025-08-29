@@ -32,7 +32,7 @@ export function UserDeleteButton({ id, name, onDelete }: UserDeleteButtonProps) 
                     Hapus
                 </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent>
+            <AlertDialogContent className="bg-white/97">
                 <AlertDialogHeader>
                     <AlertDialogTitle>Yakin ingin menghapus?</AlertDialogTitle>
                     <AlertDialogDescription>

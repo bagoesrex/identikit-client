@@ -76,7 +76,7 @@ export function UserEditDialog({ user, onUpdated }: Props) {
                     Edit
                 </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-md">
+            <DialogContent className="max-w-md bg-white/97">
                 <DialogHeader>
                     <DialogTitle>Edit Pengguna</DialogTitle>
                     <DialogDescription>Perbarui data pengguna.</DialogDescription>
