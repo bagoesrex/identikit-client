@@ -1,16 +1,14 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
 
 import { User } from "@/types/user"
 import { getColumns } from "./columns"
 import { DataTable } from "./data-table"
 import { deleteUser, getUsers } from "@/lib/axios"
 import { UserListMobile } from "@/components/user/user-list-mobile"
-import { CirclePlus } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { AxiosError } from "axios"
+import { UserCreateDialog } from "@/components/user/user-create-dialog"
 
 export default function UsersPage() {
     const [data, setData] = useState<User[]>([])
@@ -79,15 +77,9 @@ export default function UsersPage() {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
-
-                    <Link href="/users/create" className="flex flex-row justify-center items-center">
-                        <Button
-                            className="flex flex-row gap-2 justify-center items-center w-[23rem] sm:w-[9rem] py-2 bg-purple-700 text-white text-sm rounded-md hover:bg-transparent hover:text-purple-700 border border-purple-700 transition text-center"
-                        >
-                            <CirclePlus width={18} />
-                            Tambah User
-                        </Button>
-                    </Link>
+                    <div className="flex flex-row justify-center items-center">
+                        <UserCreateDialog onCreated={refreshData} />
+                    </div>
                 </div>
 
             </div>
